@@ -1,0 +1,207 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f4f4f5;
+  color: #111827;
+}
+
+/* Top bar */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background: #111827;
+  color: white;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-btn {
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.nav-btn:hover {
+  background: #1f2937;
+}
+
+.nav-btn.active {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+/* Layout */
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+}
+
+/* Sidebar */
+.sidebar {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+}
+
+.sidebar h3 {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.sidebar li {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.filter-group {
+  margin-bottom: 0.75rem;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+}
+
+.filter-group input,
+.filter-group select {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+}
+
+/* Content */
+.content {
+  min-height: 70vh;
+}
+
+.view {
+  display: none;
+}
+
+.view.visible {
+  display: block;
+}
+
+.view h1 {
+  margin-bottom: 0.75rem;
+}
+
+/* Panels */
+.panel {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+}
+
+.panel h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.table thead {
+  background: #f3f4f6;
+}
+
+.table th,
+.table td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+.table th {
+  text-align: left;
+}
+
+/* Form */
+.form-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 180px;
+}
+
+.form-group.full-width {
+  flex-basis: 100%;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+}
+
+.form-group small {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.1rem;
+}
+
+/* Buttons */
+.btn-primary {
+  border: none;
+  background: #2563eb;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}

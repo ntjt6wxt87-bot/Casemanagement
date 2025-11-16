@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Government Case Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">Gov Law Case Management</div>
+    <nav class="nav">
+      <button class="nav-btn active" data-view="dashboardView">Dashboard</button>
+      <button class="nav-btn" data-view="mattersView">Matters</button>
+      <button class="nav-btn" data-view="calendarView">Calendar</button>
+      <button class="nav-btn" data-view="reportsView">Reports</button>
+      <button class="nav-btn" data-view="adminView">Admin</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <h3>Quick Stats</h3>
+      <ul>
+        <li>Open matters: <span id="statOpenMatters">0</span></li>
+        <li>Closed matters: <span id="statClosedMatters">0</span></li>
+      </ul>
+
+      <h3>Filters</h3>
+      <div class="filter-group">
+        <label for="searchInput">Search (party / case no. / country):</label>
+        <input type="text" id="searchInput" placeholder="Type to search...">
+      </div>
+
+      <div class="filter-group">
+        <label for="filterMatterType">Matter type:</label>
+        <select id="filterMatterType">
+          <option value="">All</</option>
+          <option value="mla">Request for Assistance</option>
+          <option value="memo">Memorandum Review</option>
+          <option value="hr">Human Rights Report</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </aside>
+
+    <section class="content">
+
+      <!-- DASHBOARD VIEW -->
+      <section id="dashboardView" class="view visible">
+        <h1>Dashboard</h1>
+        <p>This is your high-level overview. As we build more features, we can add:</p>
+        <ul>
+          <li>Matters by type (MLA, memo, HR report)</li>
+          <li>Upcoming deadlines</li>
+          <li>Matters by country / offence</li>
+        </ul>
+      </section>
+
+      <!-- MATTERS VIEW -->
+      <section id="mattersView" class="view">
+        <h1>Matters</h1>
+
+        <div class="panel">
+          <h2>Matters List</h2>
+          <table class="table" id="mattersTable">
+            <thead>
+              <tr>
+                <th>Internal Ref</th>
+                <th>Court No.</th>
+                <th>Ministry Ref</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Offence(s)</th>
+                <th>Legislation</th>
+                <th>Country</th>
+                <th>Parties</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="mattersTableBody">
+              <!-- Filled dynamically by app.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel">
+          <h2>Add New Matter</h2>
+          <form id="matterForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="internalRef">Internal reference</label>
+                <input type="text" id="internalRef" required>
+              </div>
+              <div class="form-group">
+                <label for="courtRef">Court case number</label>
+                <input type="text" id="courtRef">
+              </div>
+              <div class="form-group">
+                <label for="ministryRef">Ministry ref number</label>
+                <input type="text" id="ministryRef">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="matterTitle">Matter title / short description</label>
+                <input type="text" id="matterTitle" required placeholder="e.g. MLA – USA – Fraud">
+              </div>
+              <div class="form-group">
+                <label for="matterType">Matter type</label>
+                <select id="matterType" required>
+                  <option value="">Select...</option>
+                  <option value="mla">Request for Assistance</option>
+                  <option value="memo">Memorandum Review</option>
+                  <option value="hr">Human Rights Report</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="country">Country (origin / requesting)</label>
+                <input type="text" id="country" placeholder="e.g. United States">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="offences">Offence(s)</label>
+                <input type="text" id="offences" placeholder="e.g. Money Laundering; Fraud">
+                <small>Separate multiple offences with a semicolon ;</small>
+              </div>
+              <div class="form-group">
+                <label for="legislation">Legislation</label>
+                <input type="text" id="legislation" placeholder="e.g. Proceeds of Crime Act 2018">
+                <small>Separate multiple Acts with a semicolon ;</small>
+              </div>
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status">
+                  <option value="Open">Open</option>
+                  <option value="Pending Info">Pending Info</option>
+                  <option value="Closed">Closed</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group full-width">
+                <label for="parties">Parties</label>
+                <input type="text" id="parties" placeholder="e.g. John Doe (Accused); USA DOJ (Requesting State)">
+                <small>Later we can split this into structured party fields.</small>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Save Matter</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- CALENDAR VIEW (placeholder for now) -->
+      <section id="calendarView" class="view">
+        <h1>Calendar</h1>
+        <p>Here we’ll later show hearings, deadlines, and tasks for you and your supervisor.</p>
+      </section>
+
+      <!-- REPORTS VIEW (placeholder) -->
+      <section id="reportsView" class="view">
+        <h1>Reports</h1>
+        <p>Later we’ll build reports like:</p>
+        <ul>
+          <li>Matters by type and country</li>
+          <li>Matters by offence and legislation</li>
+          <li>Workload per counsel</li>
+        </ul>
+      </section>
+
+      <!-- ADMIN VIEW (placeholder) -->
+      <section id="adminView" class="view">
+        <h1>Admin</h1>
+        <p>Eventually this is where you’ll manage users, roles, and permissions.</p>
+      </section>
+
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
