@@ -205,3 +205,17 @@ body {
 .btn-primary:hover {
   background: #1d4ed8;
 }
+
+.btn-secondary {
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #111827;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #f3f4f6;
+}

@@ -72,12 +72,12 @@ filterMatterType.addEventListener("change", () => {
   renderMatters();
 });
 
-// RENDER FUNCTION
-function renderMatters() {
+// Return matters matching current search + type filter
+function getFilteredMatters() {
   const searchText = searchInput.value.toLowerCase();
   const typeFilter = filterMatterType.value;
 
-  const filtered = matters.filter(m => {
+  return matters.filter(m => {
     if (typeFilter && m.type !== typeFilter) return false;
 
     const combined = [
@@ -95,6 +95,11 @@ function renderMatters() {
 
     return true;
   });
+}
+
+// RENDER FUNCTION
+function renderMatters() {
+  const filtered = getFilteredMatters();
 
   mattersTableBody.innerHTML = "";
 
@@ -136,6 +141,70 @@ function updateStats() {
 
   statOpenMatters.textContent = openCount;
   statClosedMatters.textContent = closedCount;
+}
+
+// DOWNLOAD CSV OF CURRENT VIEW
+function downloadCsv() {
+  const filtered = getFilteredMatters();
+
+  if (!filtered.length) {
+    alert("No matters to export for the current view.");
+    return;
+  }
+
+  const headers = [
+    "Internal Ref",
+    "Court Case No.",
+    "Ministry Ref",
+    "Title",
+    "Type",
+    "Offences",
+    "Legislation",
+    "Country",
+    "Parties",
+    "Status",
+    "Created At"
+  ];
+
+  let csv = headers.join(",") + "\n";
+
+  filtered.forEach(m => {
+    const row = [
+      m.internalRef,
+      m.courtRef,
+      m.ministryRef,
+      m.title,
+      formatMatterType(m.type),
+      m.offences,
+      m.legislation,
+      m.country,
+      m.parties,
+      m.status,
+      m.createdAt
+    ].map(value => {
+      const safe = (value || "").toString().replace(/"/g, '""');
+      return `"${safe}"`;
+    }).join(",");
+
+    csv += row + "\n";
+  });
+
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "matters.csv";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// Attach to button
+const downloadCsvBtn = document.getElementById("downloadCsvBtn");
+if (downloadCsvBtn) {
+  downloadCsvBtn.addEventListener("click", downloadCsv);
 }
 
 // Initial render

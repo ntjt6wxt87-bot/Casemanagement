@@ -34,7 +34,7 @@
       <div class="filter-group">
         <label for="filterMatterType">Matter type:</label>
         <select id="filterMatterType">
-          <option value="">All</</option>
+          <option value="">All</option>
           <option value="mla">Request for Assistance</option>
           <option value="memo">Memorandum Review</option>
           <option value="hr">Human Rights Report</option>
@@ -62,6 +62,13 @@
 
         <div class="panel">
           <h2>Matters List</h2>
+
+          <div style="margin-bottom: 0.5rem;">
+            <button id="downloadCsvBtn" class="btn-secondary">
+              Download CSV (current view)
+            </button>
+          </div>
+
           <table class="table" id="mattersTable">
             <thead>
               <tr>
